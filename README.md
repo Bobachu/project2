@@ -27,3 +27,8 @@ The goal of the project is to provide a resource where people can enter ingredie
  * Allow users to log in and save favorite recipes
  * Allow users to manage submitted recipes
 * Recipe reviews
+
+#### For help and support
+Contact Bob Syd or Amy
+
+Project created and maintained by Amy Bob and Syd
