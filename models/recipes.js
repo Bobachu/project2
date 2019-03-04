@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Recipes = sequelize.define("Recipes", {
     title: {
       type: DataTypes.STRING,
@@ -39,7 +39,6 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     }
   });
-
 
   return Recipes;
 };
