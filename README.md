@@ -11,7 +11,7 @@ The goal of the project is to provide a resource where people can enter ingredie
 ## Technologies used
 * Node and Express web server.
 * mySQL database using sequelize to connect from our server.
-* **new library, package, or technology** Chosen?
+* Chosen to create dropdowns for recipe search.
 * Yummly APIs
   * Recipe search
     * Diet restrictions
