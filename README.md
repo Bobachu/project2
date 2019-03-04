@@ -11,10 +11,11 @@ The goal of the project is to provide a resource where people can enter ingredie
 ## Technologies used
 * Node and Express web server.
 * mySQL database using sequelize to connect from our server.
-* **new library, package, or technology** TBD
-* Edamam APIs
+* **new library, package, or technology** Chosen?
+* Yummly APIs
   * Recipe search
-  * ?Nutrition Analysis?
+    * Diet restrictions
+    * Allergy restrictions
 * Handlebars for rendering the site
 * Heroku for site deployment.
 
