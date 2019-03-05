@@ -12,15 +12,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            }
-        },
-        spices: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
+            },
         diet: {
             type: DataTypes.STRING,
             allowNull: true,
