@@ -13,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-<<<<<<< HEAD
         },
         spices: {
             type: DataTypes.STRING,
@@ -43,9 +42,6 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-=======
-        }
->>>>>>> ce0bfeeb93b1f911a55d55e05dd47cc326e04c88
     });
 
     return Searches;
