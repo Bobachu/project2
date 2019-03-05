@@ -7,7 +7,7 @@ var recipeSearch;
 
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable 
 $("#recipeSearch").on("click", function (event) {
-
+ console.log("you searched")
   // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
 
