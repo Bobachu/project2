@@ -1,9 +1,9 @@
 
 // These are global variables being set here so that we can use them in our URL
-var allowedIngredient;
-var allowedDiet;
-var allowedAllergy;
-var recipeSearch;
+const allowedIngredient;
+const allowedDiet;
+const allowedAllergy;
+const recipeSearch;
 
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable 
 $recipeSearch.on("click", function (event) {
@@ -20,7 +20,7 @@ $recipeSearch.on("click", function (event) {
 
   // Here we construct our URL
 
-  var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" + recipeSearch + "&allowedIngredient[]=" + allowedIngredient;
+  const queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" + recipeSearch + "&allowedIngredient[]=" + allowedIngredient;
 
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
