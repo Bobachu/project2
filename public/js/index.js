@@ -1,22 +1,28 @@
-
 // These are global variables being set here so that we can use them in our URL
 const allowedIngredient;
 const allowedDiet;
 const allowedAllergy;
 const recipeSearch;
 
-// When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable 
-$("#recipeSearch").on("click", function (event) {
- console.log("you searched")
+// When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
+$("#recipeSearch").on("click", function(event) {
   // This prevents the submit button from refreshing the page when clicked
-  event.preventDefault();
+  event.preventDefault();git dd 
 
   //   The below code is part of the API search parameters. We can modify our search by looking for chicken recipes that are also gluten free-or modify the search for eggplant recipes that are vegan, etc. I have them commented out because I wasn't sure how to implement them currently
 
-  recipeSearch = $("#mainIngredient").val().trim();
-  allowedIngredient = $("#allowedIngredient").val().trim();
-  allowedDiet = $("#allowedDiet").val().trim();
-  allowedAllergy = $("#allowedAllergy").val().trim();
+  recipeSearch = $("#mainIngredient")
+    .val()
+    .trim();
+  allowedIngredient = $("#allowedIngredient")
+    .val()
+    .trim();
+  allowedDiet = $("#allowedDiet")
+    .val()
+    .trim();
+  allowedAllergy = $("#allowedAllergy")
+    .val()
+    .trim();
 
   // Here we construct our URL
 
@@ -28,34 +34,37 @@ $("#recipeSearch").on("click", function (event) {
     method: "GET"
 
     // Then we create a function to pull the matches from our response object/array(?)
-  }).then(function (response) {
-
+  }).then(function(response) {
     console.log(queryURL);
 
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
 
     // The forEach function loactes each element (in this case recipe) in the array
-    recipes.forEach(function (recipe) {
+    recipes.forEach(function(recipe) {
       // Here we console.log all the recipes in the array and list them by name
       console.log(recipe.recipeName);
       console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
 
-      recipe.ingredients.forEach(function (ingredient) {
+      recipe.ingredients.forEach(function(ingredient) {
         // here we console.log EACH ingredient in the recipe
         console.log("--" + ingredient);
-
+        // $("#ingredients").html(ingredient);
       });
 
-      
+      $("#searchesResults").append(
+        $("#recipeTitle").html(recipe.recipeName),
+        $("#recipeURL").html(
+          "https://www.yummly.com/recipe/" + recipe.id + "#directions"
+        )
+      );
     });
 
-    // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image. 
-    $("#searchesResults").append(response);
-    $("#searches-div").toggle(false);
-    $("#searchesResults").toggle(true);
-  });
+    // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
 
+    // $("#searches-div").toggle(false);
+    // $("#searchesResults").toggle(true);
+  });
 });
 
 // These are buttons awaiting their function instructions
@@ -68,13 +77,9 @@ $("#recipeSearch").on("click", function (event) {
 
 //   // when the add recipe button is clicked we want to take the recipe info and add it to our mySql database
 
-
-
 // });
 
+// $contactButton.on("#contactButton", function (event) {
 
-
-  // $contactButton.on("#contactButton", function (event) {
-
-  //   // here we want to verify that an email has been sent via the contact form 
-  // }
+//   // here we want to verify that an email has been sent via the contact form
+// }

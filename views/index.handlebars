@@ -21,7 +21,7 @@
 <header class="w3-display-container w3-content w3-wide " style="max-width:1600px;min-width:500px" id="home">
   <img class="w3-image" src="https://i.imgur.com/alYuI65.jpg" alt="Kitchen" width="1600" height="800">
   <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-    <h1 class="w3-xxlarge">Avo-nice Meal!</h1>
+    <h1 class="w3-xxlarge">Avocado Crumble</h1>
   </div>
 </header>
 
@@ -37,15 +37,15 @@
     </div>
 
     <div class="w3-col m6 w3-padding-large">
-      <h1>About Avocado Crumble</h1><br>
-      <h5>Tradition since 1889</h5>
-      <p>Consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor
+      <h1 class="w3-center w3-text-brown">About Avocado Crumble</h1><br>
+      <h5 class="w3-center w3-text-brown">Tradition since 1889</h5>
+      <p class="w3-large w3-text-brown">Consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
         aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore
         eu fugiat nulla pariatur. We only use <span class="w3-tag w3-light-grey w3-text-brown">seasonal</span>
         ingredients.</p>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa
+      <p class="w3-large w3-hide-medium w3-text-brown">Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt
         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
         aliquip ex ea commodo consequat.</p>
@@ -61,15 +61,15 @@
       <label class="w3-text-brown">Main Ingredient</label>
       <br>
       <br>
-      <input id="allowedIngredient" class="w3-input w3-animate-input" type="text" style="width:150px">
+      <input class="w3-input w3-animate-input" type="text" style="width:150px">
       <label class="w3-text-brown">Secondary Ingredient</label>
       <br>
       <br>
-      <input id="allowedDiet" class="w3-input w3-animate-input" type="text" style="width:150px">
+      <input class="w3-input w3-animate-input" type="text" style="width:150px">
       <label>diet placeholder</label>
       <br>
       <br>
-      <input id="allowedAllergy" class="w3-input w3-animate-input" type="text" style="width:150px">
+      <input class="w3-input w3-animate-input" type="text" style="width:150px">
       <label>allergy placeholder</label>
       <br>
       <br>
@@ -83,7 +83,12 @@
         alt="Menu" style="width:100%">
     </div>
 
-    <div id="searchesResults"></div>
+    <div id="searchesResults">
+      <h3 id="recipeTitle"></h3>
+      <P id="recipeURL"></P>
+      <p id="ingredients"></p>
+
+    </div>
 
   </div>
 
@@ -154,7 +159,7 @@
 </div>
 
 <!-- Javascript -->
-<script rel="Javascript" href="public\js\index.js"></script>
+<script rel="Javascript" src="js/index.js"></script>
 
 
 <!-- Footer -->
@@ -162,5 +167,3 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
       class="w3-hover-text-green">w3.css</a></p>
 </footer>
-
-</html>
