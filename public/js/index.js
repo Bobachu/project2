@@ -54,9 +54,9 @@ $("#recipeSearch").on("click", function(event) {
 
       $("#searchesResults").append(
         $("#recipeTitle").html(recipe.recipeName),
-        $("#recipeURL").html(
-          "https://www.yummly.com/recipe/" + recipe.id + "#directions"
-        )
+        $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
+        $("#recipeURL").html("Recipe Instructions")
+        
       );
     });
 
