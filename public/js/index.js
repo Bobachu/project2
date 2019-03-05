@@ -1,8 +1,8 @@
 // These are global variables being set here so that we can use them in our URL
-const allowedIngredient;
-const allowedDiet;
-const allowedAllergy;
-const recipeSearch;
+var allowedIngredient;
+var allowedDiet;
+var allowedAllergy;
+var recipeSearch;
 
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
