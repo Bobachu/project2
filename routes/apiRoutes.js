@@ -1,12 +1,38 @@
 const db = require("../models");
 
 module.exports = function (app) {
+
+  // <-- REFERENCE USED FOR GET -->
+
+  // // Get route for returning posts of a specific category
+  // app.get("/api/posts/category/:category", function(req, res) {
+  //   db.Post.findAll({
+  //     where: {
+  //       category: req.params.category
+  //     }
+  //   })
+  //     .then(function(dbPost) {
+  //       res.json(dbPost);
+  //     });
+  // });
+
+  // * Sort by main ingredient = req.body.'AJAXCALLNAME'.mainIngredient
+  // ! Need AJAX Call name for GET Request !
   // Get all examples
   app.get("/api/searches", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
-    });
+    db.Searches.findAll({
+      where: {
+        category: req.body.AJAXCALL.mainIngredient
+      }
+    })
+      .then(function (dbSearches) {
+        res.json(dbSearches);
+      });
   });
+
+  // <-- END OF GET -->
+
+  // ======================================================
 
   // <-- REFERENCE USED FOR POST -->
 
@@ -45,11 +71,31 @@ module.exports = function (app) {
 
   // <-- END OF POST -->
 
+  // ======================================================
+
+  // <-- REFERENCE USED FOR DELETE -->
+
+  // // DELETE route for deleting posts
+  // app.delete("/api/posts/:id", function(req, res) {
+  //   db.Post.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //     .then(function(dbPost) {
+  //       res.json(dbPost);
+  //     });
+  // });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample);
-    });
+  app.delete("/api/searches/:id", function (req, res) {
+    db.Searches.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbSearches) {
+        res.json(dbSearches);
+      });
   });
 };
