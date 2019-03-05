@@ -30,6 +30,8 @@ $("#recipeSearch").on("click", function (event) {
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function (response) {
 
+    console.log(queryURL);
+
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
 
@@ -37,6 +39,7 @@ $("#recipeSearch").on("click", function (event) {
     recipes.forEach(function (recipe) {
       // Here we console.log all the recipes in the array and list them by name
       console.log(recipe.recipeName);
+      console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
 
       recipe.ingredients.forEach(function (ingredient) {
         // here we console.log EACH ingredient in the recipe
@@ -44,6 +47,7 @@ $("#recipeSearch").on("click", function (event) {
 
       });
 
+      
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image. 
