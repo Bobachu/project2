@@ -54,13 +54,7 @@ $("#recipeSearch").on("click", function(event) {
       recipe.ingredients.forEach(function(ingredient) {
         // here we console.log EACH ingredient in the recipe
         console.log("--" + ingredient);
-        $("#searchesResults").append(
-          $("#recipeTitle").html(recipe.recipeName),
-          $("#ingredients").html(ingredient),
-          $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
-          $("#recipeURL").html("Recipe Instructions")
-          
-        );
+        
       });
 
       // Change this to render the results in the UL on the index.handlebars page
