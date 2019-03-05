@@ -26,7 +26,11 @@ $("#recipeSearch").on("click", function(event) {
 
   // Here we construct our URL
 
-  var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" + recipeSearch + "&allowedIngredient[]=" + allowedIngredient;
+  var queryURL =
+    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+    recipeSearch +
+    "&allowedIngredient[]=" +
+    allowedIngredient;
 
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
@@ -45,6 +49,7 @@ $("#recipeSearch").on("click", function(event) {
       // Here we console.log all the recipes in the array and list them by name
       console.log(recipe.recipeName);
       console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
+      console.log(recipe.imageUrlsBySize);
 
       recipe.ingredients.forEach(function(ingredient) {
         // here we console.log EACH ingredient in the recipe
@@ -52,12 +57,26 @@ $("#recipeSearch").on("click", function(event) {
         // $("#ingredients").html(ingredient);
       });
 
-      $("#searchesResults").append(
-        $("#recipeTitle").html(recipe.recipeName),
-        $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
-        $("#recipeURL").html("Recipe Instructions")
-        
+      // Change this to render the results in the UL on the index.handlebars page
+
+      var newRecipe = $("<li>").append(
+        $("<h2>").text(recipe.recipeName),
+        $("<a>").text("Recipe Instructions").attr({
+          href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
+          target:"_blank"
+        })
+        // $("<a>").attr("href", "https://www.yummly.com/recipe/" + recipe.id + "#directions"),
+        // $("<img>").attr("src", recipe.imageUrlsBySize)
       );
+      $("#searchResults").append(newRecipe);
+
+      // $("#searchesResults").append(
+      //   $("#recipeTitle").html(recipe.recipeName),
+      //   $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
+      //   $("#recipeURL").html("Recipe Instructions"),
+      //   $("#images").html(recipe.imageUrlsBySize)
+
+      // );
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
@@ -78,8 +97,3 @@ $("#recipeSearch").on("click", function(event) {
 //   // when the add recipe button is clicked we want to take the recipe info and add it to our mySql database
 
 // });
-
-// $contactButton.on("#contactButton", function (event) {
-
-//   // here we want to verify that an email has been sent via the contact form
-// }
