@@ -1,99 +1,66 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+// These are global variables being set here so that we can use them in our URL
+var allowedIngredient;
+var allowedDiet;
+var allowedAllergy;
+var recipeSearch;
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+// When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable 
+$recipeSearch.on("click", function (event) {
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+  // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+  //   The below code is part of the API search parameters. We can modify our search by looking for chicken recipes that are also gluten free-or modify the search for eggplant recipes that are vegan, etc. I have them commented out because I wasn't sure how to implement them currently
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  recipeSearch = $("#recipeSearch").val().trim();
+  allowedIngredient = $("#allowedIngredient").val().trim();
+  allowedDiet = $("#allowedDiet").val().trim();
+  allowedAllergy = $("#allowedAllergy").val().trim();
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  // Here we construct our URL
+
+  var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" + recipeSearch + "&allowedIngredient[]=" + allowedIngredient;
+
+  // Here we send our ajax call to gather the recipes from our API
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+
+    // Then we create a function to pull the matches from our response object/array(?)
+  }).then(function (response) {
+
+    // we create a variable of recipes which is equal to all of the info in the "matches" array
+    const recipes = response.matches;
+
+    // The forEach function loactes each element (in this case recipe) in the array
+    recipes.forEach(function (recipe) {
+      // Here we console.log all the recipes in the array and list them by name
+      console.log(recipe.recipeName);
+
+    });
+
+    // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image. 
+    // $("#searchesResults").append(response);
+    // $("#searches-div").toggle(false);
+    // $("#searchesResults").toggle(true);
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+});
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+// These are buttons awaiting their function instructions
+$addRecipe.on("click", function (event) {
+  // This prevents the submit button from refreshing the page when clicked
+  event.preventDefault();
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+});
+
+
+
+
+
+
+
+// $contactButton.on("#contactButton");
