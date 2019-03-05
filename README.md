@@ -9,15 +9,16 @@ The goal of the project is to provide a resource where people can enter ingredie
 * Users would be able to add their own recipes to the site which would also be included in the search.
 
 ## Technologies used
-* Node and Express web server.
-* mySQL database using sequelize to connect from our server.
-* Chosen to create dropdowns for recipe search.
+* Node and Express web server
+* mySQL database using sequelize to connect from our server
+* Chosen to create dropdowns for recipe search
 * Yummly APIs
   * Recipe search
     * Diet restrictions
     * Allergy restrictions
 * Handlebars for rendering the site
-* Heroku for site deployment.
+* Heroku for site deployment
+* W3.CSS - W3 schools css framework
 
 ## Mock ups
 ![recipe search](readmeimg/Mockup1.png "Recipe Search")  
