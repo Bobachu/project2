@@ -44,6 +44,7 @@ $("#recipeSearch").on("click", function (event) {
       recipe.ingredients.forEach(function (ingredient) {
         // here we console.log EACH ingredient in the recipe
         console.log("--" + ingredient);
+        $("#ingredients").html(ingredient);
 
       });
 
@@ -51,7 +52,11 @@ $("#recipeSearch").on("click", function (event) {
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image. 
-    $("#searchesResults").append(response);
+    $("#searchesResults").append(
+      $("#recipeTitle").html(recipe.recipeName),
+      $("#recipeURL").html("https://www.yummly.com/recipe/" + recipe.id + "#directions"),
+      
+    );
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
   });
