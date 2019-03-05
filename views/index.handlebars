@@ -66,11 +66,11 @@
       <br>
       <br>
       <input id="allowedDiet" class="w3-input w3-animate-input" type="text" style="width:150px">
-      <label>diet placeholder</label>
+      <label>Diet placeholder</label>
       <br>
       <br>
       <input id="allowedAllergy" class="w3-input w3-animate-input" type="text" style="width:150px">
-      <label>allergy placeholder</label>
+      <label>Allergy placeholder</label>
       <br>
       <br>
       <button id="recipeSearch"
@@ -83,11 +83,10 @@
         alt="Menu" style="width:100%">
     </div>
 
-    <div id="searchesResults">
-      <h3 id="recipeTitle"></h3>
-      <a id="recipeURL" href="#" target="_blank"></a>
-      <p id="ingredients"></p>
+    <div class="w3-col l6">
 
+      <ul class="w3-ul" id="searchResults">
+      </ul>
     </div>
 
   </div>
@@ -139,24 +138,24 @@
     <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
     <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message
       here:</p>
-      
-   <form action="https://formspree.io/bobachu.develop@gmail.com" method="POST"/>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="Title"></p>
-      <p><textarea class="w3-input" type="text" placeholder="Enter your message here..." required
-          name="Message" rows="4" wrap="hard"></textarea></p>
 
-      <button id="recipeSearch"
-        class="w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min">Send Message</button>
-    </div>
-    </form>
+    <form action="https://formspree.io/bobachu.develop@gmail.com" method="POST" />
+    <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+    <p><input class="w3-input w3-padding-16" type="email" placeholder="Email" required name="Email"></p>
+    <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="Title"></p>
+    <p><textarea class="w3-input" type="text" placeholder="Enter your message here..." required name="Message" rows="4"
+        wrap="hard"></textarea></p>
+
+    <button id="recipeSearch"
+      class="w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min">Send Message</button>
   </div>
+  </form>
+</div>
 
-  {{!-- NEEDED : --}}
-  {{!-- Name / Email / Title / Message Body  --}}
+{{!-- NEEDED : --}}
+{{!-- Name / Email / Title / Message Body  --}}
 
-  <!-- End page content -->
+<!-- End page content -->
 </div>
 
 <!-- Javascript -->
