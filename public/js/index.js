@@ -7,7 +7,7 @@ const recipeSearch;
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
   // This prevents the submit button from refreshing the page when clicked
-  event.preventDefault();git dd 
+  event.preventDefault();
 
   //   The below code is part of the API search parameters. We can modify our search by looking for chicken recipes that are also gluten free-or modify the search for eggplant recipes that are vegan, etc. I have them commented out because I wasn't sure how to implement them currently
 
