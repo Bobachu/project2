@@ -29,7 +29,7 @@ $("#recipeSearch").on("click", function(event) {
   var queryURL =
     "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
     recipeSearch +
-    "&allowedIngredient[]=" +
+    "&maxResult=5&allowedIngredient[]=" +
     allowedIngredient;
 
   // Here we send our ajax call to gather the recipes from our API
@@ -54,13 +54,13 @@ $("#recipeSearch").on("click", function(event) {
       recipe.ingredients.forEach(function(ingredient) {
         // here we console.log EACH ingredient in the recipe
         console.log("--" + ingredient);
-        // $("#ingredients").html(ingredient);
+        
       });
 
       // Change this to render the results in the UL on the index.handlebars page
 
       var newRecipe = $("<li>").append(
-        $("<h2>").text(recipe.recipeName),
+        $("<h2>").text(recipe.recipeName).attr("class", "w3-text-brown"),
         $("<a>").text("Recipe Instructions").attr({
           href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
           target:"_blank"
