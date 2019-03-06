@@ -39,6 +39,7 @@ $("#recipeSearch").on("click", function(event) {
         "&maxResult=5&allowedIngredient[]=" +
         allowedIngredient;
       break;
+
     case $("#diet")
       .find(":selected")
       .attr("value") &&
@@ -55,6 +56,7 @@ $("#recipeSearch").on("click", function(event) {
         "&allowedAllergy[]=" +
         allowedAllergy;
       break;
+
     case $("#diet")
       .find(":selected")
       .attr("value") &&
@@ -69,6 +71,7 @@ $("#recipeSearch").on("click", function(event) {
         "&allowedDiet[]=" +
         allowedDiet;
       break;
+      
     case !$("#diet")
       .find(":selected")
       .attr("value") &&
