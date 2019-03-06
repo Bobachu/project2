@@ -25,13 +25,8 @@ module.exports = function (app) {
   // <-- POST -->
 
   app.post("/api/recipes", function (req, res) {
-    db.Recipes.create(req.body)({
-      title: req.body.title,
-      mainIngredient: req.body.mainIngredient,
-      secondaryIngredient: req.body.secondaryIngredient,
-      instructions: req.body.instructions,
-      ingredients: req.body.ingredients
-    })
+    console.log(req.body);
+    db.Recipes.create(req.body)
       .then(function (dbRecipes) {
         res.json(dbRecipes);
       });

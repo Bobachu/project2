@@ -149,13 +149,24 @@ $("#recipeSearch").on("click", function(event) {
 });
 
 // These are buttons awaiting their function instructions
-
 // This area/button will let the user post the recipe they want to add to our recipes database-
 
-// $addRecipe.on("click", function (event) {
-//   // This prevents the submit button from refreshing the page when clicked
-//   event.preventDefault();
+$("#recipeAdd").on("click", function (event) {
+  console.log("clicked");
+  // This prevents the submit button from refreshing the page when clicked
+  event.preventDefault();
 
-//   // when the add recipe button is clicked we want to take the recipe info and add it to our mySql database
+  // when the add recipe button is clicked we want to take the recipe info and add it to our mySql database
+    var recipe = {
+      title: $("#titleAdd").val().trim(),
+      mainIngredient: $("#mainAdd").val().trim(),
+      secondaryIngredient: $("#allowedAdd").val().trim(),
+      instructions: $("#instructions").val().trim(),
+      ingredients: $("#ingredients").val().trim()
+    };
 
-// });
+    $.post("/api/recipes", recipe);
+    // $newItemInput.val("");
+  
+
+});
