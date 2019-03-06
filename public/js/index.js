@@ -120,9 +120,9 @@ $("#recipeSearch").on("click", function(event) {
           .attr({
             href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
             target: "_blank"
-          })
-        // $("<a>").attr("href", "https://www.yummly.com/recipe/" + recipe.id + "#directions"),
-        // $("<img>").attr("src", recipe.imageUrlsBySize)
+          }),
+          $("<img>").attr("src", recipe.imageUrlsBySize["90"])
+         
       );
 
       $("#searchResults").append(newRecipe);
