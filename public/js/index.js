@@ -27,66 +27,66 @@ $("#recipeSearch").on("click", function(event) {
 
   // Here we construct our URL
   if (
-    !$("#diet")
-      .find(":selected")
-      .attr("value") &&
-    !$("#allergies")
-      .find(":selected")
-      .attr("value")
-  ) {
-    queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-      recipeSearch +
-      "&maxResult=5&allowedIngredient[]=" +
-      allowedIngredient;
-  } else if (
-    $("#diet")
-      .find(":selected")
-      .attr("value") &&
-    $("#allergies")
-      .find(":selected")
-      .attr("value")
-  ) {
-    queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-      recipeSearch +
-      "&maxResult=5&allowedIngredient[]=" +
-      allowedIngredient +
-      "&allowedDiet[]=" +
-      allowedDiet +
-      "&allowedAllergy[]=" +
-      allowedAllergy;
-  } else if (
-    $("#diet")
-      .find(":selected")
-      .attr("value") &&
-    !$("#allergies")
-      .find(":selected")
-      .attr("value")
-  ) {
-    queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-      recipeSearch +
-      "&maxResult=5&allowedIngredient[]=" +
-      allowedIngredient +
-      "&allowedDiet[]=" +
-      allowedDiet;
-  } else if (
-    !$("#diet")
-      .find(":selected")
-      .attr("value") &&
-    $("#allergies")
-      .find(":selected")
-      .attr("value")
-  ) {
-    queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-      recipeSearch +
-      "&maxResult=5&allowedIngredient[]=" +
-      allowedIngredient +
-      "&allowedAllergy[]=" +
-      allowedAllergy;
-  }
+  !$("#diet")
+    .find(":selected")
+    .attr("value") &&
+  !$("#allergies")
+    .find(":selected")
+    .attr("value")
+) {
+  queryURL =
+    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+    recipeSearch +
+    "&maxResult=5&allowedIngredient[]=" +
+    allowedIngredient;
+} else if (
+  $("#diet")
+    .find(":selected")
+    .attr("value") &&
+  $("#allergies")
+    .find(":selected")
+    .attr("value")
+) {
+  queryURL =
+    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+    recipeSearch +
+    "&maxResult=5&allowedIngredient[]=" +
+    allowedIngredient +
+    "&allowedDiet[]=" +
+    allowedDiet +
+    "&allowedAllergy[]=" +
+    allowedAllergy;
+} else if (
+  $("#diet")
+    .find(":selected")
+    .attr("value") &&
+  !$("#allergies")
+    .find(":selected")
+    .attr("value")
+) {
+  queryURL =
+    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+    recipeSearch +
+    "&maxResult=5&allowedIngredient[]=" +
+    allowedIngredient +
+    "&allowedDiet[]=" +
+    allowedDiet;
+} else if (
+  !$("#diet")
+    .find(":selected")
+    .attr("value") &&
+  $("#allergies")
+    .find(":selected")
+    .attr("value")
+) {
+  queryURL =
+    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+    recipeSearch +
+    "&maxResult=5&allowedIngredient[]=" +
+    allowedIngredient +
+    "&allowedAllergy[]=" +
+    allowedAllergy;
+}
   console.log(queryURL);
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
