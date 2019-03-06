@@ -116,10 +116,10 @@ $("#recipeSearch").on("click", function(event) {
       // Change this to render the results in the UL on the index.handlebars page
 
       var newRecipe = $("<li>").append(
-        $("<h2>")
+        $("<h5>")
           .text(recipe.recipeName)
           .attr("class", "w3-text-brown"),
-          $("<img>").attr("src", recipe.imageUrlsBySize["90"]),
+          $("<img>").attr({src: recipe.imageUrlsBySize["90"], class: "w3-round-xlarge"}),
         $("<a>")
           .text("Recipe Instructions")
           .attr({
