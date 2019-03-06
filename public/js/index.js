@@ -161,8 +161,8 @@ $("#recipeAdd").on("click", function (event) {
       title: $("#titleAdd").val().trim(),
       mainIngredient: $("#mainAdd").val().trim(),
       secondaryIngredient: $("#allowedAdd").val().trim(),
-      instructions: $("#instructions").val().trim(),
-      ingredients: $("#ingredients").val().trim()
+      instructions: $("#instructions").val(),
+      ingredients: $("#ingredients").val()
     };
 
     $.post("/api/recipes", recipe);
