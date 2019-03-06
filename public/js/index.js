@@ -119,13 +119,14 @@ $("#recipeSearch").on("click", function(event) {
         $("<h2>")
           .text(recipe.recipeName)
           .attr("class", "w3-text-brown"),
+          $("<img>").attr("src", recipe.imageUrlsBySize["90"]),
         $("<a>")
           .text("Recipe Instructions")
           .attr({
             href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
-            target: "_blank"
-          }),
-          $("<img>").attr("src", recipe.imageUrlsBySize["90"])
+            target: "_blank", class: "w3-right"
+          })
+         
          
       );
 
