@@ -3,33 +3,33 @@ module.exports = function (sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // // validate: {
+      //   len: [1]
+      // }
     },
     mainIngredient: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // validate: {
+      //   len: [1]
+      // }
     },
     secondaryIngredient: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // validate: {
+      //   len: [1]
+      // }
     },
     instructions: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      // len: [1]
     },
     ingredients: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      // len: [1]
     }
   });
 

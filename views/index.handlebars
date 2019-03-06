@@ -22,8 +22,8 @@
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide " style="max-width:1600px;min-width:500px" id="home">
   <img class="w3-image" src="https://i.imgur.com/alYuI65.jpg" alt="Kitchen" width="1600" height="800">
-  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-    <h1 class="w3-xxlarge" color="black">Avocado Crumble</h1>
+  <div class="w3-display-bottomleft w3-padding-large">
+    <h1 class="w3-xxlarge">Avocado Crumble</h1>
   </div>
 </header>
 
@@ -32,7 +32,7 @@
 
   <!-- About Section -->
   <div class="w3-row w3-padding-64" id="about">
-    <div class="w3-col m6 w3-padding-medium w3-hide-small">
+    <div class="w3-col m6 w3-padding-medium w3-hide-small"><br><br>
       <img
         src="https://images.vexels.com/media/users/3/129266/isolated/preview/6df2dfc6d40daa8858fabe519272a0f0-avocado-circle-icon-by-vexels.png"
         class="w3-round w3-image w3-opacity-min" alt="Avocado" height="350px" width="350px">
@@ -40,11 +40,21 @@
 
     <div class="w3-col m6 w3-padding-medium">
       <h1>About Avocado Crumble</h1><br>
-      <p>Consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore
-        eu fugiat nulla pariatur.</p>
+      <p>Avocado Crumble is a free web-based application using the Yummly API that allows users to search for recipes
+        with specific items and/or diet restrictions.</p>
+
+      <p>
+        <h3>Searching for a Recipe</h3>
+        Searching for a recipe is very easy! You <b>must</b> enter a main as well as a secondary ingredient to view
+        recipes. If there are any specific diet restrictions or allergies you may select those as well from the
+        dropdowns.
+      </p>
+
+      <p>
+        <h3>Adding a Recipe</h3>
+        stuff goes here about adding a recipe, how do you add a recipe? who knows!
+      </p>
+      </p>
 
     </div>
   </div>
@@ -107,9 +117,10 @@
     </div>
 
     <div class="w3-col l6 w3-padding-large" id="searches-div">
-      <img
-        src="https://media1.popsugar-assets.com/files/thumbor/5_FpVQ98BKK8X328Rmp0KR2OMs0/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/09/20/222/n/28443503/tmp_9EzWtz_50da8898ffb282a0_iStock-824387032.jpg"
-        alt="Menu" style="width:100%">
+      <img src="https://i.imgur.com/4ZrRJgw.png" alt="Cookbook" style="width:100%">
+
+      <img src="https://i.imgur.com/qVgGquL.png" alt="Vegetables and Knife" style="width:100%">
+
     </div>
 
     <div class="w3-col l6">
@@ -124,24 +135,26 @@
 
   <!-- Add a Recipe Section -->
   <div class="w3-row w3-padding-64" id="addRecipe">
-    <div class="w3-col m6 w3-padding-large w3-hide-small">
-      <img
-        src="https://media1.popsugar-assets.com/files/thumbor/5_FpVQ98BKK8X328Rmp0KR2OMs0/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/09/20/222/n/28443503/tmp_9EzWtz_50da8898ffb282a0_iStock-824387032.jpg"
-        alt="Table Setting" style="width:100%">
+    <div class="w3-col m6 w3-padding-large w3-hide-small"><br><br><br><br><br><br>
+      <img src="https://i.imgur.com/I8VcRRu.png" alt="Chef" height="450px" width="450px">
     </div>
 
-    <div class="w3-col m6 w3-padding-large">
+    <div class="w3-col m6 w3-padding-large" id="recipeForm">
       <h1 class="w3-center" id="addRecipe">Add a Recipe</h1><br>
       <div align="right">
-        <input id="mainIngredient" class="w3-input w3-animate-input w3-sand" type="text" style="width:150px">
+        <input id="titleAdd" class="w3-input w3-animate-input w3-sand" type="text" style="width:150px">
+        <label class="w3-text-brown">Title</label>
+        <br>
+        <br>
+        <input id="mainAdd" class="w3-input w3-animate-input w3-sand" type="text" style="width:150px">
         <label class="w3-text-brown">Main Ingredient</label>
         <br>
         <br>
-        <input id="allowedIngredient" class="w3-input w3-animate-input w3-sand" type="text" style="width:150px">
+        <input id="allowedAdd" class="w3-input w3-animate-input w3-sand" type="text" style="width:150px">
         <label class="w3-text-brown">Secondary Ingredient</label>
         <br>
         <br>
-        <select name="diet" id="diet" class="w3-select w3-text-brown w3-sand" style="width:200px">
+        <select name="diet" id="dietAdd" class="w3-select w3-text-brown w3-sand" style="width:200px">
           <option value="" disabled selected>Choose a Diet (optional)</option>
           <option value=""></option>
           <option value="406^Ketogenic">Ketogenic</option>
@@ -157,7 +170,7 @@
         <label for="diet">Diet</label>
         <br>
         <br>
-        <select name="allergeis" id="allergies" class="w3-select w3-text-brown w3-sand" style="width:200px">
+        <select name="allergies" id="allergiesAdd" class="w3-select w3-text-brown w3-sand" style="width:200px">
           <option value="" disabled selected>Choose an Allergy (optional)</option>
           <option value=""></option>
           <option value="393^Gluten-Free">Gulten Free</option>
@@ -175,16 +188,16 @@
         <label for="allergies">Allergies</label>
         <br>
         <br>
-        <p><textarea class="w3-input w3-sand w3-text-brown" type="text" placeholder="Enter the instructions here..." required
-            name="Message" rows="4" wrap="hard"></textarea></p>
+        <p><textarea class="w3-input w3-sand w3-text-brown" id="instructions" type="text" placeholder="Enter the instructions here..."
+            required name="Message" rows="4" wrap="hard"></textarea></p>
         <br>
-        <p><textarea class="w3-input w3-sand w3-text-brown" type="text" placeholder="Enter the full ingredients here..." required
-            name="Message" rows="4" wrap="hard"></textarea></p>
+        <p><textarea class="w3-input w3-sand w3-text-brown" id="ingredients" type="text" placeholder="Enter the full ingredients here..."
+            required name="Message" rows="4" wrap="hard"></textarea></p>
         <br>
 
         <div align="center">
           <button id="recipeAdd"
-            class="w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min">Add Recipe</button>
+            type="submit" class="w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min">Add Recipe</button>
         </div>
       </div>
 
@@ -242,6 +255,7 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-camo-sandstone w3-opacity-min w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+  <p>Formatted and Javascript © Bob Church, Syd Volk, Amy Smith 2019</p>
+  <p>Template <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
       class="w3-hover-text-green">w3.css</a></p>
 </footer>
