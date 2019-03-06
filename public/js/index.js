@@ -96,7 +96,7 @@ $("#recipeSearch").on("click", function(event) {
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
     console.log(allowedDiet);
-    console.log(allowedAllergy)
+    console.log(allowedAllergy);
     $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
@@ -119,26 +119,17 @@ $("#recipeSearch").on("click", function(event) {
         $("<h2>")
           .text(recipe.recipeName)
           .attr("class", "w3-text-brown"),
-          $("<img>").attr("src", recipe.imageUrlsBySize["90"]),
+        $("<img>").attr("src", recipe.imageUrlsBySize["90"]),
         $("<a>")
           .text("Recipe Instructions")
           .attr({
             href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
-            target: "_blank", class: "w3-right"
+            target: "_blank",
+            class: "w3-right"
           })
-         
-         
       );
 
       $("#searchResults").append(newRecipe);
-
-      // $("#searchesResults").append(
-      //   $("#recipeTitle").html(recipe.recipeName),
-      //   $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
-      //   $("#recipeURL").html("Recipe Instructions"),
-      //   $("#images").html(recipe.imageUrlsBySize)
-
-      // );
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
@@ -148,25 +139,45 @@ $("#recipeSearch").on("click", function(event) {
   });
 });
 
-// These are buttons awaiting their function instructions
-// This area/button will let the user post the recipe they want to add to our recipes database-
+// ====This area/button will let the user post the recipe they want to add to our recipes database===
 
-$("#recipeAdd").on("click", function (event) {
+$("#recipeAdd").on("click", function(event) {
   console.log("clicked");
   // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
 
   // when the add recipe button is clicked we want to take the recipe info and add it to our mySql database
-    var recipe = {
-      title: $("#titleAdd").val().trim(),
-      mainIngredient: $("#mainAdd").val().trim(),
-      secondaryIngredient: $("#allowedAdd").val().trim(),
-      instructions: $("#instructions").val(),
-      ingredients: $("#ingredients").val()
-    };
+  var recipe = {
+    title: $("#titleAdd")
+      .val()
+      .trim(),
+    mainIngredient: $("#mainAdd")
+      .val()
+      .trim(),
+    secondaryIngredient: $("#allowedAdd")
+      .val()
+      .trim(),
+    instructions: $("#instructions").val(),
+    ingredients: $("#ingredients").val()
+  };
 
-    $.post("/api/recipes", recipe);
-    // $newItemInput.val("");
-  
+  $.post("/api/recipes", recipe);
 
+  $.get("api/recipes", function(data) {
+    data.forEach(function(result) {
+      console.log(result.title);
+      var addedRecipe = $("<li>").append(
+        $("<h3>")
+          .text(result.title)
+          .attr("class", "w3-text-brown"),
+        $("<p>").text(result.instructions).attr("class", "w3-text-brown"),
+        $("<p>").text(result.ingredients).attr("class", "w3-text-brown")
+      );
+
+      $("#addResults").append(addedRecipe);
+
+      $("#addImage").toggle(false);
+      $("#recipeArea").toggle(true);
+    });
+  });
 });
