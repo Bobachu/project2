@@ -3,6 +3,7 @@ var allowedIngredient;
 var allowedDiet;
 var allowedAllergy;
 var recipeSearch;
+var queryURL;
 
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
@@ -17,21 +18,73 @@ $("#recipeSearch").on("click", function(event) {
   allowedIngredient = $("#allowedIngredient")
     .val()
     .trim();
-  allowedDiet = $("#allowedDiet")
-    .val()
-    .trim();
-  allowedAllergy = $("#allowedAllergy")
-    .val()
-    .trim();
+  allowedDiet = $("#diet")
+    .find(":selected")
+    .attr("value");
+  allowedAllergy = $("#allergies")
+    .find(":selected")
+    .attr("value");
 
   // Here we construct our URL
-
-  var queryURL =
-    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-    recipeSearch +
-    "&maxResult=5&allowedIngredient[]=" +
-    allowedIngredient;
-
+  switch (true) {
+    case !$("#diet")
+      .find(":selected")
+      .attr("value") &&
+      !$("#allergies")
+        .find(":selected")
+        .attr("value"):
+      queryURL =
+        "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+        recipeSearch +
+        "&maxResult=5&allowedIngredient[]=" +
+        allowedIngredient;
+      break;
+    case $("#diet")
+      .find(":selected")
+      .attr("value") &&
+      $("#allergies")
+        .find(":selected")
+        .attr("value"):
+      queryURL =
+        "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+        recipeSearch +
+        "&maxResult=5&allowedIngredient[]=" +
+        allowedIngredient +
+        "&allowedDiet[]=" +
+        allowedDiet +
+        "&allowedAllergy[]=" +
+        allowedAllergy;
+      break;
+    case $("#diet")
+      .find(":selected")
+      .attr("value") &&
+      !$("#allergies")
+        .find(":selected")
+        .attr("value"):
+      queryURL =
+        "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+        recipeSearch +
+        "&maxResult=5&allowedIngredient[]=" +
+        allowedIngredient +
+        "&allowedDiet[]=" +
+        allowedDiet;
+      break;
+    case !$("#diet")
+      .find(":selected")
+      .attr("value") &&
+      $("#allergies")
+        .find(":selected")
+        .attr("value"):
+      queryURL =
+        "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+        recipeSearch +
+        "&maxResult=5&allowedIngredient[]=" +
+        allowedIngredient +
+        "&allowedAllergy[]=" +
+        allowedAllergy;
+      break;
+  }
+  console.log(queryURL);
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
     url: queryURL,
@@ -40,7 +93,7 @@ $("#recipeSearch").on("click", function(event) {
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
     console.log(queryURL);
-
+    $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
 
@@ -54,20 +107,24 @@ $("#recipeSearch").on("click", function(event) {
       recipe.ingredients.forEach(function(ingredient) {
         // here we console.log EACH ingredient in the recipe
         console.log("--" + ingredient);
-        
       });
 
       // Change this to render the results in the UL on the index.handlebars page
 
       var newRecipe = $("<li>").append(
-        $("<h2>").text(recipe.recipeName).attr("class", "w3-text-brown"),
-        $("<a>").text("Recipe Instructions").attr({
-          href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
-          target:"_blank"
-        })
+        $("<h2>")
+          .text(recipe.recipeName)
+          .attr("class", "w3-text-brown"),
+        $("<a>")
+          .text("Recipe Instructions")
+          .attr({
+            href: "https://www.yummly.com/recipe/" + recipe.id + "#directions",
+            target: "_blank"
+          })
         // $("<a>").attr("href", "https://www.yummly.com/recipe/" + recipe.id + "#directions"),
         // $("<img>").attr("src", recipe.imageUrlsBySize)
       );
+
       $("#searchResults").append(newRecipe);
 
       // $("#searchesResults").append(
