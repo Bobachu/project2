@@ -116,10 +116,10 @@ $("#recipeSearch").on("click", function(event) {
       // Change this to render the results in the UL on the index.handlebars page
 
       var newRecipe = $("<li>").append(
-        $("<h2>")
+        $("<h5>")
           .text(recipe.recipeName)
           .attr("class", "w3-text-brown"),
-          $("<img>").attr("src", recipe.imageUrlsBySize["90"]),
+          $("<img>").attr({src: recipe.imageUrlsBySize["90"], class: "w3-round-xlarge"}),
         $("<a>")
           .text("Recipe Instructions")
           .attr({
@@ -132,13 +132,13 @@ $("#recipeSearch").on("click", function(event) {
 
       $("#searchResults").append(newRecipe);
 
-      // $("#searchesResults").append(
-      //   $("#recipeTitle").html(recipe.recipeName),
-      //   $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
-      //   $("#recipeURL").html("Recipe Instructions"),
-      //   $("#images").html(recipe.imageUrlsBySize)
+      $("#searchesResults").append(
+        $("#recipeTitle").html(recipe.recipeName),
+        $("#recipeURL").attr("href","https://www.yummly.com/recipe/" + recipe.id + "#directions"),
+        $("#recipeURL").html("Recipe Instructions"),
+        $("#images").html(recipe.imageUrlsBySize)
 
-      // );
+      );
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
