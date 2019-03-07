@@ -29,9 +29,7 @@ module.exports = function(app) {
     console.log("+++++++++++++++++++++++++++++")
     var recipe = req.body
     console.log(req.body)
-    db.Recipes.create(recipe)({
-     
-    })
+    db.Recipes.create(recipe)
       .then(function (dbRecipes) {
         res.json(dbRecipes);
       });
