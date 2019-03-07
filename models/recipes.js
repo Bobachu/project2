@@ -21,15 +21,15 @@ module.exports = function(sequelize, DataTypes) {
       //   len: [1]
       // }
     },
-    diet: {
+    allowedAllergy: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {}
+      allowNull: true
+      // validate: {}
     },
-    allergy: {
+    allowedDiet: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {}
+      allowNull: true
+      // validate: {}
     },
     instructions: {
       type: DataTypes.TEXT,
