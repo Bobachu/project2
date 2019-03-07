@@ -17,6 +17,8 @@ module.exports = function(app) {
     });
   });
 
+
+
   // <-- END OF GET -->
 
   // ======================================================
@@ -28,22 +30,17 @@ module.exports = function(app) {
     var recipe = req.body
     console.log(req.body)
     db.Recipes.create(recipe)({
-      title: recipe.title,
-      mainIngredient: recipe.mainIngredient,
-      secondaryIngredient: recipe.secondaryIngredient,
-      instructions: recipe.instructions,
-      ingredients: recipe.ingredients
+     
     })
       .then(function (dbRecipes) {
         res.json(dbRecipes);
       });
   });
 
-  app.post("/api/searches", function (req, res) {
-    db.Searches.create(req.body)
-      .then(function (dbSearches) {
-        res.json(dbSearches);
-      });
+  app.post("/api/searches", function(req, res) {
+    db.Searches.create(req.body).then(function(dbSearches) {
+      res.json(dbSearches);
+    });
   });
 
   // <-- END OF POST -->
