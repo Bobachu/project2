@@ -135,8 +135,13 @@
 
   <!-- Add a Recipe Section -->
   <div class="w3-row w3-padding-64" id="addRecipe">
-    <div class="w3-col m6 w3-padding-large w3-hide-small"><br><br><br><br><br><br>
+    <div class="w3-col m6 w3-padding-large w3-hide-small" id="addImage"><br><br><br><br><br><br>
       <img src="https://i.imgur.com/I8VcRRu.png" alt="Chef" height="450px" width="450px">
+    </div>
+    <div class="w3-col l6 w3-container" id="recipeArea">
+
+      <ul class="w3-ul" id="addResults">
+      </ul>
     </div>
 
     <div class="w3-col m6 w3-padding-large" id="recipeForm">
@@ -188,11 +193,12 @@
         <label for="allergies">Allergies</label>
         <br>
         <br>
-        <p><textarea class="w3-input w3-sand w3-text-brown" type="text" placeholder="Enter the instructions here..."
-            required name="Message" rows="3" wrap="hard"></textarea></p>
+        <p><textarea class="w3-input w3-sand w3-text-brown" id="instructions" type="text"
+            placeholder="Enter the instructions here..." required name="Message" rows="4" wrap="hard"></textarea></p>
         <br>
-        <p><textarea class="w3-input w3-sand w3-text-brown" type="text" placeholder="Enter the full ingredients here..."
-            required name="Message" rows="3" wrap="hard"></textarea></p>
+        <p><textarea class="w3-input w3-sand w3-text-brown" id="ingredients" type="text"
+            placeholder="Enter the full ingredients here..." required name="Message" rows="4" wrap="hard"></textarea>
+        </p>
         <br>
 
         <div align="center">
@@ -202,6 +208,8 @@
       </div>
 
       <div id="addRecipeResults">
+
+
 
         {{!-- Content for add recipe Results --}}
 
