@@ -133,6 +133,14 @@ $("#recipeSearch").on("click", function(event) {
     });
 
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
+    var search = {
+      mainIngredient: recipeSearch,
+      secondaryIngredient: allowedIngredient,
+      diet: allowedDiet,
+      allergy: allowedAllergy,
+      yummlySearch: queryURL
+    }
+    $.post("/api/searches", search)
 
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
