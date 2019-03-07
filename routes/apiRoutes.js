@@ -17,6 +17,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/searches", function(req, res) {
+    db.Searches.findAll().then(function(dbSearches) {
+      res.json(dbSearches);
+    });
+  });
+
 
 
   // <-- END OF GET -->
