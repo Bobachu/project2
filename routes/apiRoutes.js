@@ -37,6 +37,13 @@ module.exports = function (app) {
       });
   });
 
+  app.post("/api/searches", function (req, res) {
+    db.Searches.create(req.body)
+      .then(function (dbSearches) {
+        res.json(dbSearches);
+      });
+  });
+
   // <-- END OF POST -->
 
   // ======================================================
