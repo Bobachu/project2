@@ -21,14 +21,13 @@ module.exports = function(app) {
 
   // <-- POST -->
 
-  app.post("/api/recipes", function (req, res) {
-    console.log("+++++++++++++++++++++++++++++")
-    var recipe = req.body
-    console.log(req.body)
-    db.Recipes.create(recipe)
-      .then(function (dbRecipes) {
-        res.json(dbRecipes);
-      });
+  app.post("/api/recipes", function(req, res) {
+    console.log("+++++++++++++++++++++++++++++");
+    var recipe = req.body;
+    console.log(req.body);
+    db.Recipes.create(recipe).then(function(dbRecipes) {
+      res.json(dbRecipes);
+    });
   });
 
   app.post("/api/searches", function(req, res) {

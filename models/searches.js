@@ -16,15 +16,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     diet: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     allergy: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     yummlySearch: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     }
   });
 
