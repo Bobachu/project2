@@ -23,13 +23,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     allowedDiet: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {}
+      allowNull: true
+      // validate: {}
     },
     allowedAllergy: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {}
+      allowNull: true
+      // validate: {}
     },
     instructions: {
       type: DataTypes.TEXT,
