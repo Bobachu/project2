@@ -334,10 +334,66 @@ $("#recipeAdd").on("click", function(event) {
     secondaryIngredient: $("#allowedAdd")
       .val()
       .trim(),
+    allowedAllergy: $("#dietAdd")
+      .val(),
+    allowedDiet: $("#allergiesAdd")
+      .val(),
     instructions: $("#instructions").val(),
     ingredients: $("#ingredients").val()
   };
 
   $.post("/api/recipes", recipe);
-  // $newItemInput.val("");
+
+  $.get("api/recipes", function(data) {
+    lastEntry = data.pop();
+
+    var addedRecipe = $("<li>").append(
+      $("<h3>")
+        .text(lastEntry.title)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.instructions)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.ingredients)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.allowedDiet)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.allowedAllergy)
+        .attr("class", "w3-text-brown"),
+     
+    );
+
+    $("#addResults").append(addedRecipe);
+
+    $("#addImage").toggle(false);
+    $("#recipeArea").toggle(true);
+  });
+
+  $("#titleAdd").val("");
+  $("#mainAdd").val("");
+  $("#allowedAdd").val("");
+  $("#dietAdd").val("");
+  $("#allergiesAdd").val("");
+  $("#instructions").val("");
+  $("#ingredients").val("");
+
+  // lastEntry.forEach(function(result) {
+  //   console.log(result.title);
+  //   var addedRecipe = $("<li>").append(
+  //     $("<h3>")
+  //       .text(result.title)
+  //       .attr("class", "w3-text-brown"),
+  //     $("<p>").text(result.instructions).attr("class", "w3-text-brown"),
+  //     $("<p>").text(result.ingredients).attr("class", "w3-text-brown")
+  //   );
+
+  //   $("#addResults").append(addedRecipe);
+
+  //   $("#addImage").toggle(false);
+  //   $("#recipeArea").toggle(true);
+  // });
 });
+// });
