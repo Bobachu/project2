@@ -21,20 +21,12 @@ module.exports = function(sequelize, DataTypes) {
       //   len: [1]
       // }
     },
-<<<<<<< HEAD
-    allowedAllergy: {
-=======
     allowedDiet: {
->>>>>>> d160c08d322e113215ed1f9ec8d44b4502fc05b4
       type: DataTypes.STRING,
       allowNull: true
       // validate: {}
     },
-<<<<<<< HEAD
-    allowedDiet: {
-=======
     allowedAllergy: {
->>>>>>> d160c08d322e113215ed1f9ec8d44b4502fc05b4
       type: DataTypes.STRING,
       allowNull: true
       // validate: {}
