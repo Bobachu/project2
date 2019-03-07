@@ -3,6 +3,3 @@ CREATE DATABASE avocado_crumbleDB;
 
 
 
--- searches model
--- recipes model
--- users model
