@@ -1,11 +1,10 @@
 const db = require("../models");
 
 module.exports = function(app) {
- 
+  // <-- GET -->
+
   app.get("/api/recipes", function(req, res) {
-    db.Recipes.findAll({
-     
-    }).then(function(dbSearches) {
+    db.Recipes.findAll().then(function(dbSearches) {
       res.json(dbSearches);
     });
   });

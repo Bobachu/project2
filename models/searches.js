@@ -17,17 +17,14 @@ module.exports = function(sequelize, DataTypes) {
     diet: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {}
     },
     allergy: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {}
     },
     yummlySearch: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {}
     }
   });
 
