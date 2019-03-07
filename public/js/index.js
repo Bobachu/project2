@@ -27,66 +27,66 @@ $("#recipeSearch").on("click", function(event) {
 
   // Here we construct our URL
   if (
-  !$("#diet")
-    .find(":selected")
-    .attr("value") &&
-  !$("#allergies")
-    .find(":selected")
-    .attr("value")
-) {
-  queryURL =
-    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-    recipeSearch +
-    "&maxResult=5&allowedIngredient[]=" +
-    allowedIngredient;
-} else if (
-  $("#diet")
-    .find(":selected")
-    .attr("value") &&
-  $("#allergies")
-    .find(":selected")
-    .attr("value")
-) {
-  queryURL =
-    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-    recipeSearch +
-    "&maxResult=5&allowedIngredient[]=" +
-    allowedIngredient +
-    "&allowedDiet[]=" +
-    allowedDiet +
-    "&allowedAllergy[]=" +
-    allowedAllergy;
-} else if (
-  $("#diet")
-    .find(":selected")
-    .attr("value") &&
-  !$("#allergies")
-    .find(":selected")
-    .attr("value")
-) {
-  queryURL =
-    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-    recipeSearch +
-    "&maxResult=5&allowedIngredient[]=" +
-    allowedIngredient +
-    "&allowedDiet[]=" +
-    allowedDiet;
-} else if (
-  !$("#diet")
-    .find(":selected")
-    .attr("value") &&
-  $("#allergies")
-    .find(":selected")
-    .attr("value")
-) {
-  queryURL =
-    "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
-    recipeSearch +
-    "&maxResult=5&allowedIngredient[]=" +
-    allowedIngredient +
-    "&allowedAllergy[]=" +
-    allowedAllergy;
-}
+    !$("#diet")
+      .find(":selected")
+      .attr("value") &&
+    !$("#allergies")
+      .find(":selected")
+      .attr("value")
+  ) {
+    queryURL =
+      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      recipeSearch +
+      "&maxResult=5&allowedIngredient[]=" +
+      allowedIngredient;
+  } else if (
+    $("#diet")
+      .find(":selected")
+      .attr("value") &&
+    $("#allergies")
+      .find(":selected")
+      .attr("value")
+  ) {
+    queryURL =
+      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      recipeSearch +
+      "&maxResult=5&allowedIngredient[]=" +
+      allowedIngredient +
+      "&allowedDiet[]=" +
+      allowedDiet +
+      "&allowedAllergy[]=" +
+      allowedAllergy;
+  } else if (
+    $("#diet")
+      .find(":selected")
+      .attr("value") &&
+    !$("#allergies")
+      .find(":selected")
+      .attr("value")
+  ) {
+    queryURL =
+      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      recipeSearch +
+      "&maxResult=5&allowedIngredient[]=" +
+      allowedIngredient +
+      "&allowedDiet[]=" +
+      allowedDiet;
+  } else if (
+    !$("#diet")
+      .find(":selected")
+      .attr("value") &&
+    $("#allergies")
+      .find(":selected")
+      .attr("value")
+  ) {
+    queryURL =
+      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      recipeSearch +
+      "&maxResult=5&allowedIngredient[]=" +
+      allowedIngredient +
+      "&allowedAllergy[]=" +
+      allowedAllergy;
+  }
   console.log(queryURL);
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
@@ -119,7 +119,7 @@ $("#recipeSearch").on("click", function(event) {
         $("<h5>")
           .text(recipe.recipeName)
           .attr("class", "w3-text-brown"),
-          //$("<img>").attr({src: recipe.imageUrlsBySize["90"], class: "w3-round-xlarge"}),
+        //$("<img>").attr({src: recipe.imageUrlsBySize["90"], class: "w3-round-xlarge"}),
         $("<a>")
           .text("Recipe Instructions")
           .attr({
@@ -139,8 +139,8 @@ $("#recipeSearch").on("click", function(event) {
       diet: allowedDiet,
       allergy: allowedAllergy,
       yummlySearch: queryURL
-    }
-    $.post("/api/searches", search)
+    };
+    $.post("/api/searches", search);
 
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
@@ -150,7 +150,6 @@ $("#recipeSearch").on("click", function(event) {
 // ====This area/button will let the user post the recipe they want to add to our recipes database===
 
 $("#recipeAdd").on("click", function(event) {
- 
   console.log("clicked");
   // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
@@ -166,6 +165,12 @@ $("#recipeAdd").on("click", function(event) {
     secondaryIngredient: $("#allowedAdd")
       .val()
       .trim(),
+    allowedAllergy: $("#dietAdd")
+      .val()
+      .trim(),
+    allowedDiet: $("#allergiesAdd")
+      .val()
+      .trim(),
     instructions: $("#instructions").val(),
     ingredients: $("#ingredients").val()
   };
@@ -173,45 +178,55 @@ $("#recipeAdd").on("click", function(event) {
   $.post("/api/recipes", recipe);
 
   $.get("api/recipes", function(data) {
+    lastEntry = data.pop();
+
+    var addedRecipe = $("<li>").append(
+      $("<h3>")
+        .text(lastEntry.title)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.instructions)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.ingredients)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.allowedDiet)
+        .attr("class", "w3-text-brown"),
+      $("<p>")
+        .text(lastEntry.allowedAllergy)
+        .attr("class", "w3-text-brown"),
      
-    lastEntry = data.pop()
+    );
 
-      var addedRecipe = $("<li>").append(
-        $("<h3>")
-          .text(lastEntry.title)
-          .attr("class", "w3-text-brown"),
-        $("<p>").text(lastEntry.instructions).attr("class", "w3-text-brown"),
-        $("<p>").text(lastEntry.ingredients).attr("class", "w3-text-brown")
-      );
+    $("#addResults").append(addedRecipe);
 
-      $("#addResults").append(addedRecipe);
-
-      $("#addImage").toggle(false);
-      $("#recipeArea").toggle(true);
-    });
-    
-    $("#titleAdd").val("")
-    $("#mainAdd").val("")
-    $("#allowedAdd").val("")
-    $("#instructions").val("")
-    $("#ingredients").val("")
-
-    // lastEntry.forEach(function(result) {
-    //   console.log(result.title);
-    //   var addedRecipe = $("<li>").append(
-    //     $("<h3>")
-    //       .text(result.title)
-    //       .attr("class", "w3-text-brown"),
-    //     $("<p>").text(result.instructions).attr("class", "w3-text-brown"),
-    //     $("<p>").text(result.ingredients).attr("class", "w3-text-brown")
-    //   );
-
-    //   $("#addResults").append(addedRecipe);
-
-    //   $("#addImage").toggle(false);
-    //   $("#recipeArea").toggle(true);
-    // });
-
+    $("#addImage").toggle(false);
+    $("#recipeArea").toggle(true);
   });
-// });
 
+  $("#titleAdd").val("");
+  $("#mainAdd").val("");
+  $("#allowedAdd").val("");
+  $("#dietAdd").val("");
+  $("#allergiesAdd").val("");
+  $("#instructions").val("");
+  $("#ingredients").val("");
+
+  // lastEntry.forEach(function(result) {
+  //   console.log(result.title);
+  //   var addedRecipe = $("<li>").append(
+  //     $("<h3>")
+  //       .text(result.title)
+  //       .attr("class", "w3-text-brown"),
+  //     $("<p>").text(result.instructions).attr("class", "w3-text-brown"),
+  //     $("<p>").text(result.ingredients).attr("class", "w3-text-brown")
+  //   );
+
+  //   $("#addResults").append(addedRecipe);
+
+  //   $("#addImage").toggle(false);
+  //   $("#recipeArea").toggle(true);
+  // });
+});
+// });
