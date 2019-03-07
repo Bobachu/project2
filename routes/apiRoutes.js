@@ -3,16 +3,8 @@ const db = require("../models");
 module.exports = function(app) {
   // <-- GET -->
 
-  // * Sort by main ingredient = req.body.'AJAXCALLNAME'.mainIngredient
-  // * Added recipeSearch AJAX call -- 11:25am 3/5/19
-
   app.get("/api/recipes", function(req, res) {
-    db.Recipes.findAll({
-      // limit: 1,
-      // where: {
-      //   title: req.body.title
-      // }
-    }).then(function(dbSearches) {
+    db.Recipes.findAll().then(function(dbSearches) {
       res.json(dbSearches);
     });
   });

@@ -5,14 +5,13 @@ var allowedAllergy;
 var recipeSearch;
 var queryURL;
 
-// getSearch();
+getSearch();
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
   // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
   findRecipes();
   pushSearch();
-  getSearch();
 });
 
 $("#recipeAdd").on("click", function(event) {
@@ -174,7 +173,7 @@ function findRecipes() {
     $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
-
+    console.log(recipes);
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
       // Here we console.log all the recipes in the array and list them by name
@@ -202,16 +201,22 @@ function findRecipes() {
 
       $("#searchResults").append(newRecipe);
 
-      // $("#searchesResults").append(
-      //   $("#recipeTitle").html(recipe.recipeName),
-      //   $("#recipeURL").attr(
-      //     "href",
-      //     "https://www.yummly.com/recipe/" + recipe.id + "#directions"
-      //   ),
-      //   $("#recipeURL").html("Recipe Instructions"),
-      //   $("#images").html(recipe.imageUrlsBySize)
-      // );
     });
+        var thisSearch = $("<li>").append(
+          $("<h5>")
+            .text(recipeSearch)
+            .attr("class", "w3-text-brown"),
+          $("<h5>")
+            .text(allowedIngredient)
+            .attr("class", "w3-text-brown"),
+          $("<button>")
+            .text("See Search")
+            .attr({
+              link: queryURL,
+              class: "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min",
+            })
+        );
+        $("#past-searches").append(thisSearch);
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
@@ -251,14 +256,39 @@ function getSearch() {
       $("#past-searches").append(oldSearch);
 
     });
-    //   $("#addImage").toggle(false);
-    //   $("#recipeArea").toggle(true);
   });
 }
 
+
+
+function getOneRecipe() {
+  $.get("api/searches/:id", function(data) {
+
+    data.forEach(function(searches) {
+      var oldSearch = $("<li>").append(
+        $("<h5>")
+          .text(searches.mainIngredient)
+          .attr("class", "w3-text-brown"),
+        $("<h5>")
+          .text(searches.secondaryIngredient)
+          .attr("class", "w3-text-brown"),
+        $("<button>")
+          .text("See Search")
+          .attr({
+            link: searches.yummlySearch,
+            class: "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min",
+          })
+      );
+      $("#past-searches").append(oldSearch);
+
+    });
+  });
+}
+
+
+
 function repeatSearch(query) {
   queryURL = query
-  console.log("query URL: " + queryURL);
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -268,15 +298,9 @@ function repeatSearch(query) {
     $("#old-searches").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
-    console.log("response: " + recipes);
 
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-      // Here we console.log all the recipes in the array and list them by name
-      // console.log(recipe.recipeName);
-      // console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
-      // console.log(recipe.imageUrlsBySize);
-
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
