@@ -39,8 +39,5 @@
             "always"
         ],
         "prettier/prettier": "error"
-    },
-    "parserOptions": {
-        "ecmaVersion": 6
-      }
+    }
 }
