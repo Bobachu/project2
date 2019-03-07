@@ -335,9 +335,9 @@ $("#recipeAdd").on("click", function(event) {
       .val()
       .trim(),
     allowedAllergy: $("#dietAdd")
-      .val(),
+      .find(":selected").text(),
     allowedDiet: $("#allergiesAdd")
-      .val(),
+      .find(":selected").text(),
     instructions: $("#instructions").val(),
     ingredients: $("#ingredients").val()
   };

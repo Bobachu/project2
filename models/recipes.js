@@ -21,12 +21,12 @@ module.exports = function(sequelize, DataTypes) {
       //   len: [1]
       // }
     },
-    diet: {
+    allowedDiet: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {}
     },
-    allergy: {
+    allowedAllergy: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {}
