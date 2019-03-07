@@ -5,7 +5,7 @@ var allowedAllergy;
 var recipeSearch;
 var queryURL;
 
-// getSearch();
+
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
   // This prevents the submit button from refreshing the page when clicked
@@ -161,7 +161,7 @@ function findRecipes() {
       "&allowedAllergy[]=" +
       allowedAllergy;
   }
-  // console.log(queryURL);
+ 
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
     url: queryURL,
@@ -169,19 +169,14 @@ function findRecipes() {
 
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
-    // console.log(allowedDiet);
-    // console.log(allowedAllergy);
+    
     $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
 
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-      // Here we console.log all the recipes in the array and list them by name
-      // console.log(recipe.recipeName);
-      // console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
-      // console.log(recipe.imageUrlsBySize);
-
+      
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
@@ -202,15 +197,6 @@ function findRecipes() {
 
       $("#searchResults").append(newRecipe);
 
-      // $("#searchesResults").append(
-      //   $("#recipeTitle").html(recipe.recipeName),
-      //   $("#recipeURL").attr(
-      //     "href",
-      //     "https://www.yummly.com/recipe/" + recipe.id + "#directions"
-      //   ),
-      //   $("#recipeURL").html("Recipe Instructions"),
-      //   $("#images").html(recipe.imageUrlsBySize)
-      // );
     });
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#searches-div").toggle(false);
@@ -251,8 +237,7 @@ function getSearch() {
       $("#past-searches").append(oldSearch);
 
     });
-    //   $("#addImage").toggle(false);
-    //   $("#recipeArea").toggle(true);
+   
   });
 }
 
@@ -268,15 +253,11 @@ function repeatSearch(query) {
     $("#old-searches").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
-    console.log("response: " + recipes);
+    
 
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-      // Here we console.log all the recipes in the array and list them by name
-      // console.log(recipe.recipeName);
-      // console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
-      // console.log(recipe.imageUrlsBySize);
-
+    
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
