@@ -23,11 +23,20 @@ module.exports = function(app) {
 
   // <-- POST -->
 
-  app.post("/api/recipes", function(req, res) {
-    console.log(req.body);
-    db.Recipes.create(req.body).then(function(dbRecipes) {
-      res.json(dbRecipes);
-    });
+  app.post("/api/recipes", function (req, res) {
+    console.log("+++++++++++++++++++++++++++++")
+    var recipe = req.body
+    console.log(req.body)
+    db.Recipes.create(recipe)({
+      title: recipe.title,
+      mainIngredient: recipe.mainIngredient,
+      secondaryIngredient: recipe.secondaryIngredient,
+      instructions: recipe.instructions,
+      ingredients: recipe.ingredients
+    })
+      .then(function (dbRecipes) {
+        res.json(dbRecipes);
+      });
   });
 
   // <-- END OF POST -->
