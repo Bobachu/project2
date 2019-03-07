@@ -80,8 +80,8 @@ $("#recipeAdd").on("click", function(event) {
 });
 
 $(document).on("click", ".past-search", function(){
-  console.log("clicked")
-  repeatSearch();
+  query = $(this).attr("link");
+  repeatSearch(query);
 });
 
 function findRecipes() {
@@ -215,6 +215,7 @@ function findRecipes() {
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
+    queryURL = ""
   });
 }
 
@@ -255,8 +256,9 @@ function getSearch() {
   });
 }
 
-function repeatSearch() {
-  queryURL = $(".old-searches").attr("link")
+function repeatSearch(query) {
+
+  queryURL = query
   console.log("query URL: " + queryURL);
   $.ajax({
     url: queryURL,
@@ -264,7 +266,7 @@ function repeatSearch() {
 
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
-    $("#searchResults").empty();
+    $("#old-searches").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
     console.log("response: " + recipes);
@@ -309,6 +311,7 @@ function repeatSearch() {
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#old-searches-img").toggle(false);
     $("#old-searches").toggle(true);
+    queryURL = ""
   });
 }
 // These are buttons awaiting their function instructions
