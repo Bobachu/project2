@@ -80,7 +80,7 @@ $("#recipeAdd").on("click", function(event) {
 });
 
 $(document).on("click", ".past-search", function(){
-  query = $(".past-search").attr("link");
+  query = $(this).attr("link");
   repeatSearch(query);
 });
 
@@ -215,6 +215,7 @@ function findRecipes() {
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
+    queryURL = ""
   });
 }
 
@@ -300,6 +301,7 @@ function repeatSearch(query) {
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#old-searches-img").toggle(false);
     $("#old-searches").toggle(true);
+    queryURL = ""
   });
 }
 
