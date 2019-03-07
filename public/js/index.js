@@ -75,10 +75,9 @@ $("#recipeAdd").on("click", function(event) {
   $("#allergiesAdd").val("");
   $("#instructions").val("");
   $("#ingredients").val("");
-
 });
 
-$(document).on("click", ".past-search", function(){
+$(document).on("click", ".past-search", function() {
   query = $(this).attr("link");
   repeatSearch(query);
 });
@@ -160,7 +159,7 @@ function findRecipes() {
       "&allowedAllergy[]=" +
       allowedAllergy;
   }
- 
+
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
     url: queryURL,
@@ -168,14 +167,12 @@ function findRecipes() {
 
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
-    
     $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
     console.log(recipes);
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-      
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
@@ -195,27 +192,27 @@ function findRecipes() {
       );
 
       $("#searchResults").append(newRecipe);
-
     });
-        var thisSearch = $("<li>").append(
-          $("<h5>")
-            .text(recipeSearch)
-            .attr("class", "w3-text-brown"),
-          $("<h5>")
-            .text(allowedIngredient)
-            .attr("class", "w3-text-brown"),
-          $("<button>")
-            .text("See Search")
-            .attr({
-              link: queryURL,
-              class: "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min",
-            })
-        );
-        $("#past-searches").append(thisSearch);
+    var thisSearch = $("<li>").append(
+      $("<h5>")
+        .text(recipeSearch)
+        .attr("class", "w3-text-brown"),
+      $("<h5>")
+        .text(allowedIngredient)
+        .attr("class", "w3-text-brown"),
+      $("<button>")
+        .text("See Search")
+        .attr({
+          link: queryURL,
+          class:
+            "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min"
+        })
+    );
+    $("#past-searches").append(thisSearch);
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#searches-div").toggle(false);
     $("#searchesResults").toggle(true);
-    queryURL = ""
+    queryURL = "";
   });
 }
 
@@ -232,7 +229,6 @@ function pushSearch() {
 // adding past searches to the past searches div
 function getSearch() {
   $.get("api/searches", function(data) {
-
     data.forEach(function(searches) {
       var oldSearch = $("<li>").append(
         $("<h5>")
@@ -245,46 +241,17 @@ function getSearch() {
           .text("See Search")
           .attr({
             link: searches.yummlySearch,
-            class: "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min",
+            class:
+              "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min"
           })
       );
       $("#past-searches").append(oldSearch);
-
-    });
-   
-  });
-}
-
-
-
-function getOneRecipe() {
-  $.get("api/searches/:id", function(data) {
-
-    data.forEach(function(searches) {
-      var oldSearch = $("<li>").append(
-        $("<h5>")
-          .text(searches.mainIngredient)
-          .attr("class", "w3-text-brown"),
-        $("<h5>")
-          .text(searches.secondaryIngredient)
-          .attr("class", "w3-text-brown"),
-        $("<button>")
-          .text("See Search")
-          .attr({
-            link: searches.yummlySearch,
-            class: "past-search w3-button w3-2017-kale w3-hover-light-green w3-hover-text-brown w3-opacity-min",
-          })
-      );
-      $("#past-searches").append(oldSearch);
-
     });
   });
 }
-
-
 
 function repeatSearch(query) {
-  queryURL = query
+  queryURL = query;
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -294,11 +261,9 @@ function repeatSearch(query) {
     $("#old-searches").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
-    
 
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-    
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
@@ -318,13 +283,10 @@ function repeatSearch(query) {
       );
 
       $("#old-searches").append(newRecipe);
-
     });
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#old-searches-img").toggle(false);
     $("#old-searches").toggle(true);
-    queryURL = ""
+    queryURL = "";
   });
 }
-
-
