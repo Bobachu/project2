@@ -160,7 +160,7 @@ function findRecipes() {
       "&allowedAllergy[]=" +
       allowedAllergy;
   }
-  // console.log(queryURL);
+ 
   // Here we send our ajax call to gather the recipes from our API
   $.ajax({
     url: queryURL,
@@ -168,19 +168,14 @@ function findRecipes() {
 
     // Then we create a function to pull the matches from our response object/array(?)
   }).then(function(response) {
-    // console.log(allowedDiet);
-    // console.log(allowedAllergy);
+    
     $("#searchResults").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
     console.log(recipes);
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
-      // Here we console.log all the recipes in the array and list them by name
-      // console.log(recipe.recipeName);
-      // console.log("https://www.yummly.com/recipe/" + recipe.id + "#directions");
-      // console.log(recipe.imageUrlsBySize);
-
+      
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
@@ -256,6 +251,7 @@ function getSearch() {
       $("#past-searches").append(oldSearch);
 
     });
+   
   });
 }
 
@@ -298,9 +294,11 @@ function repeatSearch(query) {
     $("#old-searches").empty();
     // we create a variable of recipes which is equal to all of the info in the "matches" array
     const recipes = response.matches;
+    
 
     // The forEach function loactes each element (in this case recipe) in the array
     recipes.forEach(function(recipe) {
+    
       // Change this to render the results in the UL on the index.handlebars page
       var newRecipe = $("<li>").append(
         $("<h5>")
