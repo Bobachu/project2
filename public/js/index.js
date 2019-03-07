@@ -11,7 +11,7 @@ $("#recipeSearch").on("click", function(event) {
   // This prevents the submit button from refreshing the page when clicked
   event.preventDefault();
   findRecipes();
-  pushSearch()
+  pushSearch();
   getSearch();
 });
 
@@ -257,7 +257,6 @@ function getSearch() {
 }
 
 function repeatSearch(query) {
-
   queryURL = query
   console.log("query URL: " + queryURL);
   $.ajax({
@@ -298,15 +297,6 @@ function repeatSearch(query) {
 
       $("#old-searches").append(newRecipe);
 
-      // $("#searchesResults").append(
-      //   $("#recipeTitle").html(recipe.recipeName),
-      //   $("#recipeURL").attr(
-      //     "href",
-      //     "https://www.yummly.com/recipe/" + recipe.id + "#directions"
-      //   ),
-      //   $("#recipeURL").html("Recipe Instructions"),
-      //   $("#images").html(recipe.imageUrlsBySize)
-      // );
     });
     // The code below is intended to take the response we get from the code above and append it to our HTML page, replacing our current image.
     $("#old-searches-img").toggle(false);
@@ -314,6 +304,5 @@ function repeatSearch(query) {
     queryURL = ""
   });
 }
-// These are buttons awaiting their function instructions
-// This area/button will let the user post the recipe they want to add to our recipes database-
+
 
