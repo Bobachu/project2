@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "237301",
     "database": "avocado_crumbleDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -15,7 +15,7 @@
     "logging": false
   },
   "production": {
-    "use_env_variable": "mysql://pv73h46by16ggi6v:k5ozslb0k6ch7v4h@q68u8b2buodpme2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pdz38dapbbyweotl",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
