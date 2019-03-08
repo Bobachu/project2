@@ -5,6 +5,10 @@ var allowedAllergy;
 var recipeSearch;
 var queryURL;
 
+$("#old-searches-img").toggle(true);
+$("#old-searches").toggle(false);
+
+
 getSearch();
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
 $("#recipeSearch").on("click", function(event) {
