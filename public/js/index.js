@@ -110,7 +110,7 @@ function findRecipes() {
       .attr("value")
   ) {
     queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      "https://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
       recipeSearch +
       "&maxResult=5&allowedIngredient[]=" +
       allowedIngredient;
@@ -123,7 +123,7 @@ function findRecipes() {
       .attr("value")
   ) {
     queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      "https://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
       recipeSearch +
       "&maxResult=5&allowedIngredient[]=" +
       allowedIngredient +
@@ -140,7 +140,7 @@ function findRecipes() {
       .attr("value")
   ) {
     queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      "https://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
       recipeSearch +
       "&maxResult=5&allowedIngredient[]=" +
       allowedIngredient +
@@ -155,7 +155,7 @@ function findRecipes() {
       .attr("value")
   ) {
     queryURL =
-      "http://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
+      "https://api.yummly.com/v1/api/recipes?_app_id=1f483524&_app_key=099b7a16023da9a9f8e9fd29763e0aa0&q=" +
       recipeSearch +
       "&maxResult=5&allowedIngredient[]=" +
       allowedIngredient +
