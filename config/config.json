@@ -15,6 +15,11 @@
     "logging": false
   },
   "production": {
+    "username" : "jghtnextkwo8cinz",
+    "password" : "b058j5vyno9906de",
+    "database" : "zo26p6loojqckbvd",
+    "host" : "q68u8b2buodpme2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "port" : 3306,
     "use_env_variable": "mysql://jghtnextkwo8cinz:b058j5vyno9906de@q68u8b2buodpme2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/zo26p6loojqckbvd",
     "dialect": "mysql"
   }
