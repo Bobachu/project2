@@ -7,6 +7,7 @@ var queryURL;
 
 $("#old-searches-img").toggle(true);
 $("#old-searches").toggle(false);
+$("#userResults").toggle(false);
 
 getSearch();
 // When this button is clicked-we take the data from front end, convert to variables, create a yummly url with variable
@@ -15,6 +16,7 @@ $("#recipeSearch").on("click", function(event) {
   event.preventDefault();
   findRecipes();
   pushSearch();
+  userRecipes(recipeSearch);
 });
 
 $("#recipeAdd").on("click", function(event) {
@@ -293,3 +295,32 @@ function repeatSearch(query) {
     queryURL = "";
   });
 }
+
+// function userRecipes(mainIng) {
+//   recipeSearch = mainIng;
+//   $.get("/api/recipes/" + recipeSearch, function(data) {
+//     console.log("Posts", data);
+//     data.forEach(function(recipe) {
+//       console.log(recipe.title);
+//       // Change this to render the results in the UL on the index.handlebars page
+//       var userData = $("<li>").append(
+//         $("<h5>")
+//           .text(recipe.title)
+//           .attr("class", "w3-text-brown"),
+//         $("<a>")
+//           .text(recipe.ingredients)
+//           .attr({
+//             class: "w3-right"
+//           }),
+//         $("<a>")
+//           .text(recipe.instructions)
+//           .attr({
+//             class: "w3-right"
+//           })
+//       );
+
+//       $("#userResults").append(userData);
+//     });
+//     $("#userResults").toggle(true);
+//   });
+// }

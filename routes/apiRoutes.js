@@ -9,6 +9,16 @@ module.exports = function(app) {
     });
   });
 
+  // app.get("/api/recipes/:mainIngredient", function(req, res) {
+  //   db.Recipes.findAll({
+  //     where: {
+  //       mainIngredient: req.params.mainIngredient
+  //     }
+  //   }).then(function(dbSearches) {
+  //     res.json(dbSearches);
+  //   });
+  // });
+
   app.get("/api/searches", function(req, res) {
     db.Searches.findAll().then(function(dbSearches) {
       res.json(dbSearches);
