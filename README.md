@@ -1,7 +1,7 @@
 # Project Avocado Crumble
 
 ## Goal
-The goal of the project is to provide a resource where people can enter ingredients they have on hand in thier regrigerator or pantry and be shown a list of possible recipes they can make with what they have entered.
+The goal of the project is to provide a resource where people can enter ingredients they have on hand in their refrigerator or pantry and be shown a list of possible recipes they can make with what they have entered.
 
 ## MVP
 * Entering ingredients the user has on hand under pre-selected categories such as main, add ons, and seasonings, would show the user a list of potential recipes they could make with what they have on hand.
